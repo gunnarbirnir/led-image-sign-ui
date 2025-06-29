@@ -4,6 +4,10 @@ import styled from "styled-components";
 import { useAppContext, useFocusSignTextArea } from "../hooks";
 import {
   MEDIA_QUERY,
+  MIN_ROWS,
+  MAX_ROWS,
+  MIN_COLUMNS,
+  MAX_COLUMNS,
   MIN_SPEED,
   MAX_SPEED,
   MIN_ON_BULB_LIGHTNESS,
@@ -22,23 +26,27 @@ const MenuForm: FC = () => {
   const {
     menuOpen,
     promptText,
+    rows,
+    columns,
     onBulbLightness,
     offBulbLightness,
     frameLightness,
     backgroundLightness,
     animationSpeed,
-    fullWidth,
     hideFrame,
+    boomerang,
     setMenuOpen,
     setPromptText,
+    setRows,
+    setColumns,
     resetSignConfig,
     setOnBulbLightness,
     setOffBulbLightness,
     setFrameLightness,
     setBackgroundLightness,
     setAnimationSpeed,
-    setFullWidth,
     setHideFrame,
+    setBoomerang,
   } = useAppContext();
   const textAreaRef = useFocusSignTextArea(menuOpen);
 
@@ -66,6 +74,50 @@ const MenuForm: FC = () => {
             onChange={setPromptText}
           />
         </div>
+        <DimensionsSliders>
+          <Slider
+            value={rows}
+            label="Rows"
+            min={MIN_ROWS}
+            max={MAX_ROWS}
+            onChange={setRows}
+          />
+          <Slider
+            value={columns}
+            label="Columns"
+            min={MIN_COLUMNS}
+            max={MAX_COLUMNS}
+            onChange={setColumns}
+          />
+        </DimensionsSliders>
+        <Slider
+          value={animationSpeed}
+          label="Speed"
+          min={MIN_SPEED}
+          max={MAX_SPEED}
+          onChange={setAnimationSpeed}
+        />
+      </FormLeft>
+      <FormButtons>
+        <Button onClick={handleCloseMenu} className="generate-button">
+          Generate
+        </Button>
+        <CopyLinkButton variant="outlined" />
+        <Button onClick={handleReset} variant="outlined">
+          Reset
+        </Button>
+      </FormButtons>
+      <FormRight>
+        <Switch
+          label="Hide Frame"
+          checked={hideFrame}
+          onCheckedChange={setHideFrame}
+        />
+        <Switch
+          label="Boomerang"
+          checked={boomerang}
+          onCheckedChange={setBoomerang}
+        />
         <SectionLabel>Lightness</SectionLabel>
         <Slider
           value={onBulbLightness}
@@ -95,36 +147,6 @@ const MenuForm: FC = () => {
           max={MAX_BACKGROUND_LIGHTNESS}
           onChange={setBackgroundLightness}
         />
-      </FormLeft>
-      <FormRight>
-        <FullWidthSwitch
-          label="Full Width"
-          checked={fullWidth}
-          onCheckedChange={setFullWidth}
-        />
-        <Switch
-          label="Hide Frame"
-          checked={hideFrame}
-          onCheckedChange={setHideFrame}
-        />
-        <RightSliders>
-          <Slider
-            value={animationSpeed}
-            label="Speed"
-            min={MIN_SPEED}
-            max={MAX_SPEED}
-            onChange={setAnimationSpeed}
-          />
-        </RightSliders>
-        <FormButtons>
-          <Button onClick={handleCloseMenu} className="apply-button">
-            Apply
-          </Button>
-          <CopyLinkButton variant="outlined" />
-          <Button onClick={handleReset} variant="outlined">
-            Reset
-          </Button>
-        </FormButtons>
       </FormRight>
     </StyledMenuForm>
   );
@@ -132,19 +154,53 @@ const MenuForm: FC = () => {
 
 const StyledMenuForm = styled.div`
   display: grid;
+  grid-template-areas:
+    "form-left form-right"
+    "form-buttons form-right";
   grid-template-columns: 1fr 1fr;
-  gap: var(--padding-4);
+  grid-template-rows: auto auto;
+  grid-column-gap: var(--padding-4);
+  grid-row-gap: var(--padding-3);
 
   @media (max-width: ${MEDIA_QUERY.MOBILE}) {
+    grid-template-areas:
+      "form-left"
+      "form-right"
+      "form-buttons";
     grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
     gap: var(--padding-3);
   }
 `;
 
 const FormLeft = styled.div`
+  grid-area: form-left;
   > * {
     padding-bottom: var(--padding-3);
   }
+  @media (max-width: ${MEDIA_QUERY.MOBILE}) {
+    > *:last-child {
+      padding-bottom: 0px;
+    }
+  }
+`;
+
+const FormRight = styled.div`
+  grid-area: form-right;
+  > *:not(:last-child) {
+    padding-bottom: var(--padding-3);
+  }
+  @media (max-width: ${MEDIA_QUERY.MOBILE}) {
+    > *:last-child {
+      padding-bottom: var(--padding-3);
+    }
+  }
+`;
+
+const DimensionsSliders = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--padding-3);
 `;
 
 const SectionLabel = styled.p`
@@ -153,48 +209,18 @@ const SectionLabel = styled.p`
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   padding-bottom: var(--padding-3);
+  padding-top: var(--padding-3);
   -webkit-text-size-adjust: 100%;
 `;
 
-const FormRight = styled.div`
-  > * {
-    padding-bottom: var(--padding-3);
-  }
-`;
-
-const RightSliders = styled.div`
-  padding-top: var(--padding-3);
-  padding-bottom: var(--padding-3);
-  > * {
-    padding-bottom: var(--padding-3);
-  }
-`;
-
-const FullWidthSwitch = styled(Switch)`
-  @media (max-width: ${MEDIA_QUERY.SIGN_WIDTH}) {
-    display: none;
-  }
-`;
-
 const FormButtons = styled.div`
+  grid-area: form-buttons;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--padding-3);
-  .apply-button {
-    display: none;
-  }
 
-  @media (max-width: ${MEDIA_QUERY.MOBILE}) {
-    grid-template-columns: repeat(3, 1fr);
-    .apply-button {
-      display: block;
-    }
-  }
-  @media (max-width: ${MEDIA_QUERY.SMALL_MOBILE}) {
-    grid-template-columns: 1fr 1fr;
-    .apply-button {
-      grid-column-end: span 2;
-    }
+  .generate-button {
+    grid-column-end: span 2;
   }
 `;
 

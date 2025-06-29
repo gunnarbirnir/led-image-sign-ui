@@ -25,6 +25,8 @@ const useAppContextValue = ({
       resetSignConfig,
       setPromptText: (promptText: string) =>
         updateSignConfigDebounced({ promptText }),
+      setRows: (rows: number) => updateSignConfigDebounced({ rows }),
+      setColumns: (columns: number) => updateSignConfigDebounced({ columns }),
       setOnBulbLightness: (onBulbLightness: number) =>
         updateSignConfigDebounced({ onBulbLightness }),
       setOffBulbLightness: (offBulbLightness: number) =>
@@ -35,8 +37,8 @@ const useAppContextValue = ({
         updateSignConfigDebounced({ backgroundLightness }),
       setAnimationSpeed: (animationSpeed: number) =>
         updateSignConfigDebounced({ animationSpeed }),
-      setFullWidth: (fullWidth: boolean) => updateSignConfig({ fullWidth }),
       setHideFrame: (hideFrame: boolean) => updateSignConfig({ hideFrame }),
+      setBoomerang: (boomerang: boolean) => updateSignConfig({ boomerang }),
     }),
     [
       menuOpen,

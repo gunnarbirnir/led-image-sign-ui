@@ -56,7 +56,7 @@ const StyledIconButton = styled.button`
   @media (min-width: ${MEDIA_QUERY.MOBILE}) {
     :hover,
     :active {
-      background-color: var(--primary-color-saturated);
+      background-color: var(--primary-color-hover);
     }
   }
 `;

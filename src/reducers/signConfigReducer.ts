@@ -1,12 +1,14 @@
 export interface SignConfig {
   promptText: string;
+  rows: number;
+  columns: number;
   onBulbLightness: number;
   offBulbLightness: number;
   frameLightness: number;
   backgroundLightness: number;
   animationSpeed: number;
-  fullWidth: boolean;
   hideFrame: boolean;
+  boomerang: boolean;
 }
 
 export type SignConfigUpdate = Partial<SignConfig>;

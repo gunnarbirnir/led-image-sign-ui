@@ -55,11 +55,11 @@ const StyledButton = styled.button`
   @media (min-width: ${MEDIA_QUERY.MOBILE}) {
     :hover,
     :active {
-      background-color: var(--primary-color-saturated);
+      background-color: var(--primary-color-hover);
       &.outlined-button {
         background-color: var(--background-color);
-        border-color: var(--primary-color-saturated);
-        color: var(--primary-color-saturated);
+        border-color: var(--primary-color-hover);
+        color: var(--primary-color-hover);
       }
     }
   }

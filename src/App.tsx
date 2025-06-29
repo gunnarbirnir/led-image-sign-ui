@@ -2,13 +2,7 @@ import React, { FC, useMemo, useState, CSSProperties } from "react";
 import styled from "styled-components";
 import { LEDImageSign } from "@gunnarbirnir/led-message-sign";
 
-import {
-  useSignConfig,
-  useWindowDimensions,
-  useFullWidthToggleInProgress,
-  useCssVariables,
-  useAppContextValue,
-} from "./hooks";
+import { useSignConfig, useCssVariables, useAppContextValue } from "./hooks";
 import { AppContext } from "./context";
 import { Menu, MenuButton } from "./components";
 import {
@@ -24,7 +18,6 @@ const App: FC = () => {
     input,
     initialized,
     animationSpeed,
-    fullWidth,
     hideFrame,
     onBulbLightness,
     offBulbLightness,
@@ -35,23 +28,13 @@ const App: FC = () => {
     resetSignConfig,
   } = useSignConfig();
 
-  const { width: windowWidth } = useWindowDimensions();
-  const fullWidthToggleInProgress = useFullWidthToggleInProgress(fullWidth);
-  const hideSign = useMemo(
-    () => !initialized || fullWidthToggleInProgress,
-    [initialized, fullWidthToggleInProgress]
-  );
-  const signFullWidth = useMemo(
-    () => fullWidth || windowWidth < SIGN_DEFAULT_WIDTH,
-    [fullWidth, windowWidth]
-  );
   const animationFramesPerUpdate = useMemo(
     () => MAX_SPEED + MIN_SPEED - animationSpeed,
     [animationSpeed]
   );
   const signStyle = useMemo(
-    () => ({ visibility: hideSign ? "hidden" : "visible" } as CSSProperties),
-    [hideSign]
+    () => ({ visibility: initialized ? "visible" : "hidden" } as CSSProperties),
+    [initialized]
   );
   const cssVariables = useCssVariables(UI_PRIMARY_COLOR_HUE);
 
@@ -71,13 +54,10 @@ const App: FC = () => {
           <LEDImageSign
             images={[]}
             /* animationOptions={{
-              delay: 0,
               direction: "normal",
               fill: "auto",
-              iterations: 0,
             }} */
             width={SIGN_DEFAULT_WIDTH}
-            fullWidth={signFullWidth}
             onBulbLightness={onBulbLightness}
             offBulbLightness={offBulbLightness}
             frameLightness={frameLightness}

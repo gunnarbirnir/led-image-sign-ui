@@ -2,6 +2,10 @@ export const UI_PRIMARY_COLOR_HUE = 230;
 export const SIGN_DEFAULT_WIDTH = 500;
 export const MENU_TRANSITION_DURATION = 200;
 
+export const MIN_ROWS = 5;
+export const MAX_ROWS = 20;
+export const MIN_COLUMNS = 5;
+export const MAX_COLUMNS = 20;
 export const MIN_ON_BULB_LIGHTNESS = 70;
 export const MAX_ON_BULB_LIGHTNESS = 100;
 export const MIN_OFF_BULB_LIGHTNESS = 0;
@@ -15,13 +19,15 @@ export const MAX_SPEED = 60;
 
 export const INIT_SIGN_CONFIG = {
   promptText: "",
+  rows: 10,
+  columns: 10,
   onBulbLightness: 95,
   offBulbLightness: 10,
   frameLightness: 15,
   backgroundLightness: 0,
   animationSpeed: 55,
-  fullWidth: false,
   hideFrame: false,
+  boomerang: false,
 };
 
 export const MEDIA_QUERY = {
@@ -32,11 +38,13 @@ export const MEDIA_QUERY = {
 
 export const URL_PARAM_KEYS: Record<string, string> = {
   promptText: "text",
+  rows: "rows",
+  columns: "columns",
   onBulbLightness: "on-lightness",
   offBulbLightness: "off-lightness",
   frameLightness: "frame-lightness",
   backgroundLightness: "background-lightness",
   animationSpeed: "speed",
-  fullWidth: "full-width",
   hideFrame: "hide-frame",
+  boomerang: "boomerang",
 };
