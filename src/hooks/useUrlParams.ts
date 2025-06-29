@@ -4,8 +4,6 @@ import { SignConfigUpdate } from "../reducers/signConfigReducer";
 import {
   INIT_SIGN_CONFIG,
   URL_PARAM_KEYS,
-  MIN_COLOR_HUE,
-  MAX_COLOR_HUE,
   MIN_ON_BULB_LIGHTNESS,
   MAX_ON_BULB_LIGHTNESS,
   MIN_OFF_BULB_LIGHTNESS,
@@ -16,19 +14,12 @@ import {
   MAX_BACKGROUND_LIGHTNESS,
   MIN_SPEED,
   MAX_SPEED,
-  MIN_HEIGHT,
-  MAX_HEIGHT,
-  MIN_STATIC_MODE_DELAY,
-  MAX_STATIC_MODE_DELAY,
 } from "../constants";
 import { sanitizeMinMaxValue } from "../utils";
 
 type SignConfigKey = keyof SignConfigUpdate;
 
-const DEFAULT_SIGN_TEXT = "LED Message Sign";
-
 const sanitizeParamVal: Record<string, (val: any) => any> = {
-  colorHue: sanitizeMinMaxValue(MIN_COLOR_HUE, MAX_COLOR_HUE),
   onBulbLightness: sanitizeMinMaxValue(
     MIN_ON_BULB_LIGHTNESS,
     MAX_ON_BULB_LIGHTNESS
@@ -43,11 +34,6 @@ const sanitizeParamVal: Record<string, (val: any) => any> = {
     MAX_BACKGROUND_LIGHTNESS
   ),
   animationSpeed: sanitizeMinMaxValue(MIN_SPEED, MAX_SPEED),
-  signHeight: sanitizeMinMaxValue(MIN_HEIGHT, MAX_HEIGHT),
-  staticModeDelay: sanitizeMinMaxValue(
-    MIN_STATIC_MODE_DELAY,
-    MAX_STATIC_MODE_DELAY
-  ),
 };
 
 const useUrlParams = (initConfig: (config: SignConfigUpdate) => void) => {
@@ -78,7 +64,7 @@ const useUrlParams = (initConfig: (config: SignConfigUpdate) => void) => {
       }
     });
 
-    initConfig({ signText: DEFAULT_SIGN_TEXT, ...paramValues });
+    initConfig(paramValues);
   }, [initConfig]);
 
   const updateUrlParams = useCallback((config: SignConfigUpdate) => {

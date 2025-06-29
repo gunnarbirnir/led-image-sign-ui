@@ -1,17 +1,12 @@
 export interface SignConfig {
-  signText: string;
-  colorHue: number;
+  promptText: string;
   onBulbLightness: number;
   offBulbLightness: number;
   frameLightness: number;
   backgroundLightness: number;
   animationSpeed: number;
-  signHeight: number;
   fullWidth: boolean;
   hideFrame: boolean;
-  coloredOffLights: boolean;
-  staticMode: boolean;
-  staticModeDelay: number;
 }
 
 export type SignConfigUpdate = Partial<SignConfig>;

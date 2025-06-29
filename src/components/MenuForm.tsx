@@ -6,8 +6,6 @@ import {
   MEDIA_QUERY,
   MIN_SPEED,
   MAX_SPEED,
-  MIN_HEIGHT,
-  MAX_HEIGHT,
   MIN_ON_BULB_LIGHTNESS,
   MAX_ON_BULB_LIGHTNESS,
   MIN_OFF_BULB_LIGHTNESS,
@@ -16,43 +14,31 @@ import {
   MAX_FRAME_LIGHTNESS,
   MIN_BACKGROUND_LIGHTNESS,
   MAX_BACKGROUND_LIGHTNESS,
-  MIN_STATIC_MODE_DELAY,
-  MAX_STATIC_MODE_DELAY,
 } from "../constants";
-import { TextArea, HueSlider, Slider, Button, Switch } from "./elements";
+import { TextArea, Slider, Button, Switch } from "./elements";
 import CopyLinkButton from "./CopyLinkButton";
 
 const MenuForm: FC = () => {
   const {
     menuOpen,
-    signText,
-    colorHue,
+    promptText,
     onBulbLightness,
     offBulbLightness,
     frameLightness,
     backgroundLightness,
     animationSpeed,
-    signHeight,
     fullWidth,
     hideFrame,
-    coloredOffLights,
-    staticMode,
-    staticModeDelay,
     setMenuOpen,
+    setPromptText,
     resetSignConfig,
-    setSignText,
-    setColorHue,
     setOnBulbLightness,
     setOffBulbLightness,
     setFrameLightness,
     setBackgroundLightness,
     setAnimationSpeed,
-    setSignHeight,
     setFullWidth,
     setHideFrame,
-    setColoredOffLights,
-    setStaticMode,
-    setStaticModeDelay,
   } = useAppContext();
   const textAreaRef = useFocusSignTextArea(menuOpen);
 
@@ -73,14 +59,13 @@ const MenuForm: FC = () => {
         <div>
           <TextArea
             ref={textAreaRef}
-            value={signText}
+            value={promptText}
             height={100}
             maxLength={100}
-            placeholder="Sign Text (separate by line for multiple messages)"
-            onChange={setSignText}
+            placeholder="Prompt to generate animation (fx. Tropical Island)"
+            onChange={setPromptText}
           />
         </div>
-        <HueSlider value={colorHue} onChange={setColorHue} />
         <SectionLabel>Lightness</SectionLabel>
         <Slider
           value={onBulbLightness}
@@ -122,16 +107,6 @@ const MenuForm: FC = () => {
           checked={hideFrame}
           onCheckedChange={setHideFrame}
         />
-        <Switch
-          label="Colored Off Lights"
-          checked={coloredOffLights}
-          onCheckedChange={setColoredOffLights}
-        />
-        <Switch
-          label="Static Mode"
-          checked={staticMode}
-          onCheckedChange={setStaticMode}
-        />
         <RightSliders>
           <Slider
             value={animationSpeed}
@@ -139,21 +114,6 @@ const MenuForm: FC = () => {
             min={MIN_SPEED}
             max={MAX_SPEED}
             onChange={setAnimationSpeed}
-          />
-          <Slider
-            value={signHeight}
-            label="Height"
-            min={MIN_HEIGHT}
-            max={MAX_HEIGHT}
-            onChange={setSignHeight}
-          />
-          <Slider
-            value={staticModeDelay}
-            label="Static Mode Delay"
-            min={MIN_STATIC_MODE_DELAY}
-            max={MAX_STATIC_MODE_DELAY}
-            disabled={!staticMode}
-            onChange={setStaticModeDelay}
           />
         </RightSliders>
         <FormButtons>

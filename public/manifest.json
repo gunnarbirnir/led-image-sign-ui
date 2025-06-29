@@ -1,6 +1,6 @@
 {
   "short_name": "LED Sign",
-  "name": "LED Message Sign",
+  "name": "LED Image Sign",
   "icons": [
     {
       "src": "favicon.ico",

@@ -23,10 +23,8 @@ const useAppContextValue = ({
       ...input,
       setMenuOpen,
       resetSignConfig,
-      setSignText: (signText: string) =>
-        updateSignConfigDebounced({ signText }),
-      setColorHue: (colorHue: number) =>
-        updateSignConfigDebounced({ colorHue }),
+      setPromptText: (promptText: string) =>
+        updateSignConfigDebounced({ promptText }),
       setOnBulbLightness: (onBulbLightness: number) =>
         updateSignConfigDebounced({ onBulbLightness }),
       setOffBulbLightness: (offBulbLightness: number) =>
@@ -37,15 +35,8 @@ const useAppContextValue = ({
         updateSignConfigDebounced({ backgroundLightness }),
       setAnimationSpeed: (animationSpeed: number) =>
         updateSignConfigDebounced({ animationSpeed }),
-      setSignHeight: (signHeight: number) =>
-        updateSignConfigDebounced({ signHeight }),
       setFullWidth: (fullWidth: boolean) => updateSignConfig({ fullWidth }),
       setHideFrame: (hideFrame: boolean) => updateSignConfig({ hideFrame }),
-      setColoredOffLights: (coloredOffLights: boolean) =>
-        updateSignConfig({ coloredOffLights }),
-      setStaticMode: (staticMode: boolean) => updateSignConfig({ staticMode }),
-      setStaticModeDelay: (staticModeDelay: number) =>
-        updateSignConfigDebounced({ staticModeDelay }),
     }),
     [
       menuOpen,

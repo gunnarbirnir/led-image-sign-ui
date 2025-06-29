@@ -1,5 +1,5 @@
-# LED Message Sign UI
+# LED Image Sign UI
 
-UI to change [led-message-sign](https://github.com/gunnarbirnir/led-message-sign) props.
+UI to change props for LEDImageSign component from [led-message-sign](https://github.com/gunnarbirnir/led-message-sign) package.
 
-See here: [LED Message Sign](https://master--willowy-tarsier-1357d9.netlify.app/)
+See here: [LED Image Sign](https://master--willowy-tarsier-1357d9.netlify.app/)
