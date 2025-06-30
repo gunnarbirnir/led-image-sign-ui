@@ -5,12 +5,8 @@ import { LEDImageSign } from "@gunnarbirnir/led-message-sign";
 import { useSignConfig, useCssVariables, useAppContextValue } from "./hooks";
 import { AppContext } from "./context";
 import { Menu, MenuButton } from "./components";
-import {
-  SIGN_DEFAULT_WIDTH,
-  MAX_SPEED,
-  MIN_SPEED,
-  UI_PRIMARY_COLOR_HUE,
-} from "./constants";
+import { MAX_SPEED, MIN_SPEED, UI_PRIMARY_COLOR_HUE } from "./constants";
+import { generateTestImage } from "./utils/images";
 
 const App: FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -52,12 +48,12 @@ const App: FC = () => {
       <AppContainer className="d-f fd-c" style={cssVariables}>
         <MainContent className="f-1 d-f fd-c jc-c ai-c pos-r">
           <LEDImageSign
-            images={[]}
+            images={generateTestImage(15)}
             /* animationOptions={{
               direction: "normal",
               fill: "auto",
             }} */
-            width={SIGN_DEFAULT_WIDTH}
+            width={300}
             onBulbLightness={onBulbLightness}
             offBulbLightness={offBulbLightness}
             frameLightness={frameLightness}

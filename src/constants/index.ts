@@ -1,10 +1,9 @@
 export const UI_PRIMARY_COLOR_HUE = 230;
-export const SIGN_DEFAULT_WIDTH = 500;
 export const MENU_TRANSITION_DURATION = 200;
 
-export const MIN_ROWS = 5;
+export const MIN_ROWS = 10;
 export const MAX_ROWS = 20;
-export const MIN_COLUMNS = 5;
+export const MIN_COLUMNS = 10;
 export const MAX_COLUMNS = 20;
 export const MIN_ON_BULB_LIGHTNESS = 70;
 export const MAX_ON_BULB_LIGHTNESS = 100;
@@ -19,8 +18,8 @@ export const MAX_SPEED = 60;
 
 export const INIT_SIGN_CONFIG = {
   promptText: "",
-  rows: 10,
-  columns: 10,
+  rows: 15,
+  columns: 15,
   onBulbLightness: 95,
   offBulbLightness: 10,
   frameLightness: 15,
@@ -31,7 +30,6 @@ export const INIT_SIGN_CONFIG = {
 };
 
 export const MEDIA_QUERY = {
-  SIGN_WIDTH: `${SIGN_DEFAULT_WIDTH}px`,
   MOBILE: "800px",
   SMALL_MOBILE: "600px",
 };
