@@ -48,7 +48,11 @@ const App: FC = () => {
       <AppContainer className="d-f fd-c" style={cssVariables}>
         <MainContent className="f-1 d-f fd-c jc-c ai-c pos-r">
           <LEDImageSign
-            images={generateTestImage(15)}
+            images={[
+              ...generateTestImage(15, 0),
+              ...generateTestImage(15, 120),
+              ...generateTestImage(15, 240),
+            ]}
             /* animationOptions={{
               direction: "normal",
               fill: "auto",
