@@ -15,6 +15,7 @@ const App: FC = () => {
     initialized,
     animationSpeed,
     hideFrame,
+    boomerang,
     onBulbLightness,
     offBulbLightness,
     frameLightness,
@@ -27,6 +28,10 @@ const App: FC = () => {
   const animationFramesPerUpdate = useMemo(
     () => MAX_SPEED + MIN_SPEED - animationSpeed,
     [animationSpeed]
+  );
+  const animationDirection = useMemo(
+    () => (boomerang ? "alternate" : "normal"),
+    [boomerang]
   );
   const signStyle = useMemo(
     () => ({ visibility: initialized ? "visible" : "hidden" } as CSSProperties),
@@ -53,10 +58,7 @@ const App: FC = () => {
               ...generateTestImage(15, 120),
               ...generateTestImage(15, 240),
             ]}
-            /* animationOptions={{
-              direction: "normal",
-              fill: "auto",
-            }} */
+            animationOptions={{ direction: animationDirection }}
             width={300}
             onBulbLightness={onBulbLightness}
             offBulbLightness={offBulbLightness}

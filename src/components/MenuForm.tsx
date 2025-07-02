@@ -138,6 +138,7 @@ const MenuForm: FC = () => {
           label="Frame"
           min={MIN_FRAME_LIGHTNESS}
           max={MAX_FRAME_LIGHTNESS}
+          disabled={hideFrame}
           onChange={setFrameLightness}
         />
         <Slider
