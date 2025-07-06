@@ -13,6 +13,7 @@ const App: FC = () => {
   const {
     input,
     initialized,
+    size,
     animationSpeed,
     hideFrame,
     boomerang,
@@ -52,18 +53,22 @@ const App: FC = () => {
     <AppContext.Provider value={contextValue}>
       <AppContainer className="d-f fd-c" style={cssVariables}>
         <MainContent className="f-1 d-f fd-c jc-c ai-c pos-r">
-          <LEDImageSign
-            images={PSYCHEDELIC_SIGN}
-            animationOptions={{ direction: animationDirection }}
-            width={300}
-            onBulbLightness={onBulbLightness}
-            offBulbLightness={offBulbLightness}
-            frameLightness={frameLightness}
-            backgroundLightness={backgroundLightness}
-            hideFrame={hideFrame}
-            animationFramesPerUpdate={animationFramesPerUpdate}
-            style={signStyle}
-          />
+          <SignContainer>
+            <div className="d-f jc-c">
+              <LEDImageSign
+                images={PSYCHEDELIC_SIGN}
+                animationOptions={{ direction: animationDirection }}
+                width={size}
+                onBulbLightness={onBulbLightness}
+                offBulbLightness={offBulbLightness}
+                frameLightness={frameLightness}
+                backgroundLightness={backgroundLightness}
+                hideFrame={hideFrame}
+                animationFramesPerUpdate={animationFramesPerUpdate}
+                style={signStyle}
+              />
+            </div>
+          </SignContainer>
           <MenuButton />
         </MainContent>
         <Menu />
@@ -81,6 +86,12 @@ const AppContainer = styled.div`
 
 const MainContent = styled.main`
   min-height: var(--main-content-min-height);
+`;
+
+const SignContainer = styled.div`
+  overflow: auto;
+  width: 100%;
+  padding: var(--padding-4) var(--padding-3);
 `;
 
 export default App;

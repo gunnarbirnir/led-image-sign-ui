@@ -1,7 +1,6 @@
 export interface SignConfig {
   promptText: string;
-  rows: number;
-  columns: number;
+  size: number;
   onBulbLightness: number;
   offBulbLightness: number;
   frameLightness: number;

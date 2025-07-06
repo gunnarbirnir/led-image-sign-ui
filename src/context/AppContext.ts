@@ -7,8 +7,7 @@ interface AppContextProps extends SignConfig {
   setMenuOpen: (open: boolean) => void;
   resetSignConfig: () => void;
   setPromptText: (text: string) => void;
-  setRows: (rows: number) => void;
-  setColumns: (columns: number) => void;
+  setSize: (size: number) => void;
   setOnBulbLightness: (lightness: number) => void;
   setOffBulbLightness: (lightness: number) => void;
   setFrameLightness: (lightness: number) => void;
@@ -21,8 +20,7 @@ interface AppContextProps extends SignConfig {
 const AppContext = createContext<AppContextProps>({
   menuOpen: false,
   promptText: "",
-  rows: 0,
-  columns: 0,
+  size: 0,
   onBulbLightness: 0,
   offBulbLightness: 0,
   frameLightness: 0,
@@ -33,8 +31,7 @@ const AppContext = createContext<AppContextProps>({
   setMenuOpen: () => null,
   resetSignConfig: () => null,
   setPromptText: () => null,
-  setRows: () => null,
-  setColumns: () => null,
+  setSize: () => null,
   setOnBulbLightness: () => null,
   setOffBulbLightness: () => null,
   setFrameLightness: () => null,

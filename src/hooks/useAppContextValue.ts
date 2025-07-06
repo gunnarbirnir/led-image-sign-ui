@@ -25,8 +25,7 @@ const useAppContextValue = ({
       resetSignConfig,
       setPromptText: (promptText: string) =>
         updateSignConfigDebounced({ promptText }),
-      setRows: (rows: number) => updateSignConfigDebounced({ rows }),
-      setColumns: (columns: number) => updateSignConfigDebounced({ columns }),
+      setSize: (size: number) => updateSignConfigDebounced({ size }),
       setOnBulbLightness: (onBulbLightness: number) =>
         updateSignConfigDebounced({ onBulbLightness }),
       setOffBulbLightness: (offBulbLightness: number) =>

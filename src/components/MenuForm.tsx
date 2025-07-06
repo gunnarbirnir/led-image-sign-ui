@@ -4,12 +4,10 @@ import styled from "styled-components";
 import { useAppContext, useFocusSignTextArea } from "../hooks";
 import {
   MEDIA_QUERY,
-  MIN_ROWS,
-  MAX_ROWS,
-  MIN_COLUMNS,
-  MAX_COLUMNS,
   MIN_SPEED,
   MAX_SPEED,
+  MIN_SIZE,
+  MAX_SIZE,
   MIN_ON_BULB_LIGHTNESS,
   MAX_ON_BULB_LIGHTNESS,
   MIN_OFF_BULB_LIGHTNESS,
@@ -26,8 +24,7 @@ const MenuForm: FC = () => {
   const {
     menuOpen,
     promptText,
-    rows,
-    columns,
+    size,
     onBulbLightness,
     offBulbLightness,
     frameLightness,
@@ -37,8 +34,7 @@ const MenuForm: FC = () => {
     boomerang,
     setMenuOpen,
     setPromptText,
-    setRows,
-    setColumns,
+    setSize,
     resetSignConfig,
     setOnBulbLightness,
     setOffBulbLightness,
@@ -74,22 +70,13 @@ const MenuForm: FC = () => {
             onChange={setPromptText}
           />
         </div>
-        <DimensionsSliders>
-          <Slider
-            value={rows}
-            label="Rows"
-            min={MIN_ROWS}
-            max={MAX_ROWS}
-            onChange={setRows}
-          />
-          <Slider
-            value={columns}
-            label="Columns"
-            min={MIN_COLUMNS}
-            max={MAX_COLUMNS}
-            onChange={setColumns}
-          />
-        </DimensionsSliders>
+        <Slider
+          value={size}
+          label="Size"
+          min={MIN_SIZE}
+          max={MAX_SIZE}
+          onChange={setSize}
+        />
         <Slider
           value={animationSpeed}
           label="Speed"
@@ -196,12 +183,6 @@ const FormRight = styled.div`
       padding-bottom: var(--padding-3);
     }
   }
-`;
-
-const DimensionsSliders = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--padding-3);
 `;
 
 const SectionLabel = styled.p`
