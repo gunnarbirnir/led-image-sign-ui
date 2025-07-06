@@ -6,7 +6,7 @@ import { useSignConfig, useCssVariables, useAppContextValue } from "./hooks";
 import { AppContext } from "./context";
 import { Menu, MenuButton } from "./components";
 import { MAX_SPEED, MIN_SPEED, UI_PRIMARY_COLOR_HUE } from "./constants";
-import { generateTestImage } from "./utils/images";
+import { PSYCHEDELIC_SIGN } from "./animations/psychedelic";
 
 const App: FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -53,11 +53,7 @@ const App: FC = () => {
       <AppContainer className="d-f fd-c" style={cssVariables}>
         <MainContent className="f-1 d-f fd-c jc-c ai-c pos-r">
           <LEDImageSign
-            images={[
-              ...generateTestImage(15, 0),
-              ...generateTestImage(15, 120),
-              ...generateTestImage(15, 240),
-            ]}
+            images={PSYCHEDELIC_SIGN}
             animationOptions={{ direction: animationDirection }}
             width={300}
             onBulbLightness={onBulbLightness}
