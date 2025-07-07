@@ -8,7 +8,7 @@ const useIsSignFullWidth = (size: number) => {
   const { width } = useWindowDimensions();
 
   const isFullWidth = useMemo(() => {
-    return width < size + SIGN_PADDING;
+    return width > 0 && width < size + SIGN_PADDING;
   }, [width, size]);
 
   return isFullWidth;
