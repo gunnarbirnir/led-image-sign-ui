@@ -1,5 +1,5 @@
 // PSYCHEDELIC_SIGN_20: 10 frames, 20x20, psychedelic swirling/radiating color pattern
-export const PSYCHEDELIC_SIGN: (number | null)[][][] = [
+export const PSYCHEDELIC_20: (number | null)[][][] = [
   // Frame 1: Rainbow swirl
   Array.from({ length: 20 }, (_, y) =>
     Array.from({ length: 20 }, (_, x) =>

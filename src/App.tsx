@@ -11,7 +11,7 @@ import {
 import { AppContext } from "./context";
 import { Menu, MenuButton } from "./components";
 import { MAX_SPEED, MIN_SPEED, UI_PRIMARY_COLOR_HUE } from "./constants";
-import { PSYCHEDELIC_SIGN } from "./animations/psychedelic";
+import { RAVE_PARTY_16 } from "./animations/rave";
 
 const App: FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -62,7 +62,7 @@ const App: FC = () => {
           <SignContainer>
             <div className="d-f jc-c">
               <LEDImageSign
-                images={PSYCHEDELIC_SIGN}
+                images={RAVE_PARTY_16}
                 animationOptions={{ direction: animationDirection }}
                 width={size}
                 fullWidth={isFullWidth}

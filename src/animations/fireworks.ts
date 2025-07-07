@@ -1,4 +1,4 @@
-export const FIREWORKS_SIGN: (number | null)[][][] = [
+export const FIREWORKS_20: (number | null)[][][] = [
   // Frame 1: Launch
   Array.from({ length: 20 }, (_, y) =>
     Array.from({ length: 20 }, (_, x) => (x === 10 && y > 10 ? 60 : null))
