@@ -10,8 +10,9 @@ import {
 } from "./hooks";
 import { AppContext } from "./context";
 import { Menu, MenuButton } from "./components";
-import { MAX_SPEED, MIN_SPEED, UI_PRIMARY_COLOR_HUE } from "./constants";
+import { UI_PRIMARY_COLOR_HUE } from "./constants";
 import { RAVE_PARTY_16 } from "./animations/rave";
+import { calcAnimationFramesPerUpdate } from "./utils";
 
 const App: FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,7 +33,7 @@ const App: FC = () => {
   } = useSignConfig();
 
   const animationFramesPerUpdate = useMemo(
-    () => MAX_SPEED + MIN_SPEED - animationSpeed,
+    () => calcAnimationFramesPerUpdate(animationSpeed),
     [animationSpeed]
   );
   const animationDirection = useMemo(

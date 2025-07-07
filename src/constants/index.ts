@@ -12,7 +12,7 @@ export const MAX_FRAME_LIGHTNESS = 40;
 export const MIN_BACKGROUND_LIGHTNESS = 0;
 export const MAX_BACKGROUND_LIGHTNESS = 30;
 export const MIN_SPEED = 1;
-export const MAX_SPEED = 60;
+export const MAX_SPEED = 15;
 
 export const INIT_SIGN_CONFIG = {
   promptText: "",
@@ -21,7 +21,7 @@ export const INIT_SIGN_CONFIG = {
   offBulbLightness: 10,
   frameLightness: 15,
   backgroundLightness: 0,
-  animationSpeed: 55,
+  animationSpeed: 10,
   hideFrame: false,
   boomerang: false,
 };
