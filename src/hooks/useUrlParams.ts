@@ -14,6 +14,8 @@ import {
   MAX_BACKGROUND_LIGHTNESS,
   MIN_SPEED,
   MAX_SPEED,
+  MIN_SIZE,
+  MAX_SIZE,
 } from "../constants";
 import { sanitizeMinMaxValue } from "../utils";
 
@@ -34,6 +36,7 @@ const sanitizeParamVal: Record<string, (val: any) => any> = {
     MAX_BACKGROUND_LIGHTNESS
   ),
   animationSpeed: sanitizeMinMaxValue(MIN_SPEED, MAX_SPEED),
+  size: sanitizeMinMaxValue(MIN_SIZE, MAX_SIZE),
 };
 
 const useUrlParams = (initConfig: (config: SignConfigUpdate) => void) => {
