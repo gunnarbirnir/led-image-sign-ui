@@ -2,7 +2,12 @@ import React, { FC, useMemo, useState, CSSProperties } from "react";
 import styled from "styled-components";
 import { LEDImageSign } from "@gunnarbirnir/led-message-sign";
 
-import { useSignConfig, useCssVariables, useAppContextValue } from "./hooks";
+import {
+  useSignConfig,
+  useCssVariables,
+  useAppContextValue,
+  useIsSignFullWidth,
+} from "./hooks";
 import { AppContext } from "./context";
 import { Menu, MenuButton } from "./components";
 import { MAX_SPEED, MIN_SPEED, UI_PRIMARY_COLOR_HUE } from "./constants";
@@ -39,6 +44,7 @@ const App: FC = () => {
     [initialized]
   );
   const cssVariables = useCssVariables(UI_PRIMARY_COLOR_HUE);
+  const isFullWidth = useIsSignFullWidth(size);
 
   const contextValue = useAppContextValue({
     input,
@@ -59,6 +65,7 @@ const App: FC = () => {
                 images={PSYCHEDELIC_SIGN}
                 animationOptions={{ direction: animationDirection }}
                 width={size}
+                fullWidth={isFullWidth}
                 onBulbLightness={onBulbLightness}
                 offBulbLightness={offBulbLightness}
                 frameLightness={frameLightness}

@@ -3,6 +3,8 @@ import useAppContext from "./useAppContext";
 import useFocusSignTextArea from "./useFocusSignTextArea";
 import useCssVariables from "./useCssVariables";
 import useAppContextValue from "./useAppContextValue";
+import useWindowDimensions from "./useWindowDimensions";
+import useIsSignFullWidth from "./useIsSignFullWidth";
 
 export {
   useSignConfig,
@@ -10,4 +12,6 @@ export {
   useFocusSignTextArea,
   useCssVariables,
   useAppContextValue,
+  useWindowDimensions,
+  useIsSignFullWidth,
 };
