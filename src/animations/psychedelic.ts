@@ -1,63 +1,102 @@
-// PSYCHEDELIC_SIGN_20: 10 frames, 20x20, psychedelic swirling/radiating color pattern
-export const PSYCHEDELIC_20: (number | null)[][][] = [
-  // Frame 1: Rainbow swirl
-  Array.from({ length: 20 }, (_, y) =>
-    Array.from({ length: 20 }, (_, x) =>
-      (x + y) % 2 === 0 ? (x * 18 + y * 18) % 360 : null
-    )
+export const PSYCHEDELIC_TRIP_16: (number | null)[][][] = [
+  // Frame 1: Swirling rainbow spiral, fills and centers the 16x16 frame
+  Array.from({ length: 16 }, (_, y) =>
+    Array.from({ length: 16 }, (_, x) => {
+      const dx = x - 7.5,
+        dy = y - 7.5;
+      const angle = Math.atan2(dy, dx);
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      return dist < 8 ? ((angle * 180) / Math.PI + dist * 45 + 0) % 360 : null;
+    })
   ),
-  // Frame 2: Swirl rotates
-  Array.from({ length: 20 }, (_, y) =>
-    Array.from({ length: 20 }, (_, x) =>
-      (x + y) % 2 === 0 ? (x * 18 + y * 18 + 36) % 360 : null
-    )
+  // Frame 2: Spiral rotates
+  Array.from({ length: 16 }, (_, y) =>
+    Array.from({ length: 16 }, (_, x) => {
+      const dx = x - 7.5,
+        dy = y - 7.5;
+      const angle = Math.atan2(dy, dx);
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      return dist < 8 ? ((angle * 180) / Math.PI + dist * 45 + 36) % 360 : null;
+    })
   ),
-  // Frame 3: Swirl rotates more
-  Array.from({ length: 20 }, (_, y) =>
-    Array.from({ length: 20 }, (_, x) =>
-      (x + y) % 2 === 0 ? (x * 18 + y * 18 + 72) % 360 : null
-    )
+  // Frame 3: Spiral rotates
+  Array.from({ length: 16 }, (_, y) =>
+    Array.from({ length: 16 }, (_, x) => {
+      const dx = x - 7.5,
+        dy = y - 7.5;
+      const angle = Math.atan2(dy, dx);
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      return dist < 8 ? ((angle * 180) / Math.PI + dist * 45 + 72) % 360 : null;
+    })
   ),
-  // Frame 4: Swirl rotates more
-  Array.from({ length: 20 }, (_, y) =>
-    Array.from({ length: 20 }, (_, x) =>
-      (x + y) % 2 === 0 ? (x * 18 + y * 18 + 108) % 360 : null
-    )
+  // Frame 4: Spiral rotates
+  Array.from({ length: 16 }, (_, y) =>
+    Array.from({ length: 16 }, (_, x) => {
+      const dx = x - 7.5,
+        dy = y - 7.5;
+      const angle = Math.atan2(dy, dx);
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      return dist < 8 ? ((angle * 180) / Math.PI + dist * 45 + 108) % 360 : null;
+    })
   ),
-  // Frame 5: Swirl rotates more
-  Array.from({ length: 20 }, (_, y) =>
-    Array.from({ length: 20 }, (_, x) =>
-      (x + y) % 2 === 0 ? (x * 18 + y * 18 + 144) % 360 : null
-    )
+  // Frame 5: Spiral rotates
+  Array.from({ length: 16 }, (_, y) =>
+    Array.from({ length: 16 }, (_, x) => {
+      const dx = x - 7.5,
+        dy = y - 7.5;
+      const angle = Math.atan2(dy, dx);
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      return dist < 8 ? ((angle * 180) / Math.PI + dist * 45 + 144) % 360 : null;
+    })
   ),
-  // Frame 6: Swirl rotates more
-  Array.from({ length: 20 }, (_, y) =>
-    Array.from({ length: 20 }, (_, x) =>
-      (x + y) % 2 === 0 ? (x * 18 + y * 18 + 180) % 360 : null
-    )
+  // Frame 6: Spiral rotates
+  Array.from({ length: 16 }, (_, y) =>
+    Array.from({ length: 16 }, (_, x) => {
+      const dx = x - 7.5,
+        dy = y - 7.5;
+      const angle = Math.atan2(dy, dx);
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      return dist < 8 ? ((angle * 180) / Math.PI + dist * 45 + 180) % 360 : null;
+    })
   ),
-  // Frame 7: Swirl rotates more
-  Array.from({ length: 20 }, (_, y) =>
-    Array.from({ length: 20 }, (_, x) =>
-      (x + y) % 2 === 0 ? (x * 18 + y * 18 + 216) % 360 : null
-    )
+  // Frame 7: Spiral rotates
+  Array.from({ length: 16 }, (_, y) =>
+    Array.from({ length: 16 }, (_, x) => {
+      const dx = x - 7.5,
+        dy = y - 7.5;
+      const angle = Math.atan2(dy, dx);
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      return dist < 8 ? ((angle * 180) / Math.PI + dist * 45 + 216) % 360 : null;
+    })
   ),
-  // Frame 8: Swirl rotates more
-  Array.from({ length: 20 }, (_, y) =>
-    Array.from({ length: 20 }, (_, x) =>
-      (x + y) % 2 === 0 ? (x * 18 + y * 18 + 252) % 360 : null
-    )
+  // Frame 8: Spiral rotates
+  Array.from({ length: 16 }, (_, y) =>
+    Array.from({ length: 16 }, (_, x) => {
+      const dx = x - 7.5,
+        dy = y - 7.5;
+      const angle = Math.atan2(dy, dx);
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      return dist < 8 ? ((angle * 180) / Math.PI + dist * 45 + 252) % 360 : null;
+    })
   ),
-  // Frame 9: Swirl rotates more
-  Array.from({ length: 20 }, (_, y) =>
-    Array.from({ length: 20 }, (_, x) =>
-      (x + y) % 2 === 0 ? (x * 18 + y * 18 + 288) % 360 : null
-    )
+  // Frame 9: Spiral rotates
+  Array.from({ length: 16 }, (_, y) =>
+    Array.from({ length: 16 }, (_, x) => {
+      const dx = x - 7.5,
+        dy = y - 7.5;
+      const angle = Math.atan2(dy, dx);
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      return dist < 8 ? ((angle * 180) / Math.PI + dist * 45 + 288) % 360 : null;
+    })
   ),
-  // Frame 10: Swirl rotates more
-  Array.from({ length: 20 }, (_, y) =>
-    Array.from({ length: 20 }, (_, x) =>
-      (x + y) % 2 === 0 ? (x * 18 + y * 18 + 324) % 360 : null
-    )
+  // Frame 10: Spiral rotates
+  Array.from({ length: 16 }, (_, y) =>
+    Array.from({ length: 16 }, (_, x) => {
+      const dx = x - 7.5,
+        dy = y - 7.5;
+      const angle = Math.atan2(dy, dx);
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      return dist < 8 ? ((angle * 180) / Math.PI + dist * 45 + 324) % 360 : null;
+    })
   ),
 ];
