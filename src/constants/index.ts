@@ -1,7 +1,7 @@
 export const UI_PRIMARY_COLOR_HUE = 230;
 export const MENU_TRANSITION_DURATION = 200;
 
-export const MIN_SIZE = 100;
+export const MIN_SIZE = 200;
 export const MAX_SIZE = 500;
 export const MIN_ON_BULB_LIGHTNESS = 70;
 export const MAX_ON_BULB_LIGHTNESS = 100;
