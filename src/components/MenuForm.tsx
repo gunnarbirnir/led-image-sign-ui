@@ -17,13 +17,13 @@ import {
   MIN_BACKGROUND_LIGHTNESS,
   MAX_BACKGROUND_LIGHTNESS,
 } from "../constants";
-import { TextArea, Slider, Button, Switch } from "./elements";
+import { Slider, Button, Switch } from "./elements";
 import CopyLinkButton from "./CopyLinkButton";
+import AnimationPresets from "./AnimationPresets";
 
 const MenuForm: FC = () => {
   const {
     menuOpen,
-    promptText,
     size,
     onBulbLightness,
     offBulbLightness,
@@ -32,8 +32,6 @@ const MenuForm: FC = () => {
     animationSpeed,
     hideFrame,
     boomerang,
-    setMenuOpen,
-    setPromptText,
     setSize,
     resetSignConfig,
     setOnBulbLightness,
@@ -53,23 +51,12 @@ const MenuForm: FC = () => {
     }
   }, [resetSignConfig, textAreaRef]);
 
-  const handleCloseMenu = useCallback(() => {
-    setMenuOpen(false);
-  }, [setMenuOpen]);
-
   return (
     <StyledMenuForm>
       <FormLeft>
-        <div>
-          <TextArea
-            ref={textAreaRef}
-            value={promptText}
-            height={100}
-            maxLength={100}
-            placeholder="Prompt to generate animation (fx. Tropical Island)"
-            onChange={setPromptText}
-          />
-        </div>
+        <PresetsContainer>
+          <AnimationPresets />
+        </PresetsContainer>
         <Slider
           value={size}
           label="Size"
@@ -86,13 +73,8 @@ const MenuForm: FC = () => {
         />
       </FormLeft>
       <FormButtons>
-        <Button onClick={handleCloseMenu} className="generate-button">
-          Generate
-        </Button>
-        <CopyLinkButton variant="outlined" />
-        <Button onClick={handleReset} variant="outlined">
-          Reset
-        </Button>
+        <CopyLinkButton />
+        <Button onClick={handleReset}>Reset</Button>
       </FormButtons>
       <FormRight>
         <Switch
@@ -146,7 +128,7 @@ const StyledMenuForm = styled.div`
     "form-left form-right"
     "form-buttons form-right";
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-rows: 1fr auto;
   grid-column-gap: var(--padding-4);
   grid-row-gap: var(--padding-3);
 
@@ -156,8 +138,6 @@ const StyledMenuForm = styled.div`
       "form-right"
       "form-buttons";
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, auto);
-    gap: var(--padding-3);
   }
 `;
 
@@ -185,6 +165,10 @@ const FormRight = styled.div`
   }
 `;
 
+const PresetsContainer = styled.div`
+  padding-bottom: var(--padding-4);
+`;
+
 const SectionLabel = styled.p`
   text-transform: uppercase;
   color: var(--light-gray);
@@ -200,10 +184,6 @@ const FormButtons = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--padding-3);
-
-  .generate-button {
-    grid-column-end: span 2;
-  }
 `;
 
 export default MenuForm;

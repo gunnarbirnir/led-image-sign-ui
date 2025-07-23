@@ -11,7 +11,7 @@ import {
 import { AppContext } from "./context";
 import { Menu, MenuButton } from "./components";
 import { UI_PRIMARY_COLOR_HUE } from "./constants";
-import { PSYCHEDELIC_TRIP_16 } from "./animations/psychedelic";
+import { presetMap } from "./animations";
 import { calcAnimationFramesPerUpdate } from "./utils";
 
 const App: FC = () => {
@@ -19,6 +19,7 @@ const App: FC = () => {
   const {
     input,
     initialized,
+    preset,
     size,
     animationSpeed,
     hideFrame,
@@ -63,7 +64,7 @@ const App: FC = () => {
           <SignContainer>
             <div className="d-f jc-c">
               <LEDImageSign
-                images={PSYCHEDELIC_TRIP_16}
+                images={presetMap[preset]?.animation || []}
                 animationOptions={{ direction: animationDirection }}
                 width={size}
                 fullWidth={isFullWidth}

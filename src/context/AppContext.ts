@@ -6,7 +6,7 @@ interface AppContextProps extends SignConfig {
   menuOpen: boolean;
   setMenuOpen: (open: boolean) => void;
   resetSignConfig: () => void;
-  setPromptText: (text: string) => void;
+  setPreset: (preset: string) => void;
   setSize: (size: number) => void;
   setOnBulbLightness: (lightness: number) => void;
   setOffBulbLightness: (lightness: number) => void;
@@ -19,7 +19,7 @@ interface AppContextProps extends SignConfig {
 
 const AppContext = createContext<AppContextProps>({
   menuOpen: false,
-  promptText: "",
+  preset: "",
   size: 0,
   onBulbLightness: 0,
   offBulbLightness: 0,
@@ -30,7 +30,7 @@ const AppContext = createContext<AppContextProps>({
   boomerang: false,
   setMenuOpen: () => null,
   resetSignConfig: () => null,
-  setPromptText: () => null,
+  setPreset: () => null,
   setSize: () => null,
   setOnBulbLightness: () => null,
   setOffBulbLightness: () => null,

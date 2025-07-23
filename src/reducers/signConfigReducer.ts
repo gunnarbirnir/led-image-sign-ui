@@ -1,5 +1,5 @@
 export interface SignConfig {
-  promptText: string;
+  preset: string;
   size: number;
   onBulbLightness: number;
   offBulbLightness: number;

@@ -23,8 +23,7 @@ const useAppContextValue = ({
       ...input,
       setMenuOpen,
       resetSignConfig,
-      setPromptText: (promptText: string) =>
-        updateSignConfigDebounced({ promptText }),
+      setPreset: (preset: string) => updateSignConfig({ preset }),
       setSize: (size: number) => updateSignConfigDebounced({ size }),
       setOnBulbLightness: (onBulbLightness: number) =>
         updateSignConfigDebounced({ onBulbLightness }),

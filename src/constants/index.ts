@@ -15,7 +15,7 @@ export const MIN_SPEED = 1;
 export const MAX_SPEED = 15;
 
 export const INIT_SIGN_CONFIG = {
-  promptText: "",
+  preset: "psychedelic",
   size: 300,
   onBulbLightness: 95,
   offBulbLightness: 10,
@@ -32,7 +32,7 @@ export const MEDIA_QUERY = {
 };
 
 export const URL_PARAM_KEYS: Record<string, string> = {
-  promptText: "text",
+  preset: "preset",
   size: "size",
   onBulbLightness: "on-lightness",
   offBulbLightness: "off-lightness",
