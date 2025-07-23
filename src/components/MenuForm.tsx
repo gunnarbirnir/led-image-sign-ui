@@ -34,6 +34,7 @@ const MenuForm: FC = () => {
     boomerang,
     setSize,
     resetSignConfig,
+    setMenuOpen,
     setOnBulbLightness,
     setOffBulbLightness,
     setFrameLightness,
@@ -50,6 +51,10 @@ const MenuForm: FC = () => {
       textAreaRef.current.focus();
     }
   }, [resetSignConfig, textAreaRef]);
+
+  const handleCloseMenu = useCallback(() => {
+    setMenuOpen(false);
+  }, [setMenuOpen]);
 
   return (
     <StyledMenuForm>
@@ -73,8 +78,13 @@ const MenuForm: FC = () => {
         />
       </FormLeft>
       <FormButtons>
-        <CopyLinkButton />
-        <Button onClick={handleReset}>Reset</Button>
+        <Button onClick={handleCloseMenu} className="apply-button">
+          Apply
+        </Button>
+        <CopyLinkButton variant="outlined" />
+        <Button onClick={handleReset} variant="outlined">
+          Reset
+        </Button>
       </FormButtons>
       <FormRight>
         <Switch
@@ -184,6 +194,23 @@ const FormButtons = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--padding-3);
+
+  .apply-button {
+    display: none;
+  }
+
+  @media (max-width: ${MEDIA_QUERY.MOBILE}) {
+    grid-template-columns: repeat(3, 1fr);
+    .apply-button {
+      display: block;
+    }
+  }
+  @media (max-width: ${MEDIA_QUERY.SMALL_MOBILE}) {
+    grid-template-columns: 1fr 1fr;
+    .apply-button {
+      grid-column-end: span 2;
+    }
+  }
 `;
 
 export default MenuForm;

@@ -34,7 +34,7 @@ const Pill: FC<PropsWithChildren<PillProps>> = ({
 const ActivePill = styled.div`
   color: var(--black);
   background-color: var(--primary-color-light);
-  padding: var(--padding-2) var(--padding-3);
+  padding: var(--padding-1) var(--padding-2);
   border: var(--border-width) solid var(--primary-color-light);
   border-radius: var(--border-radius-round);
   text-transform: uppercase;
@@ -45,7 +45,7 @@ const ActivePill = styled.div`
 const InactivePill = styled.button`
   color: var(--primary-color-light);
   background-color: var(--background-color);
-  padding: var(--padding-2) var(--padding-3);
+  padding: var(--padding-1) var(--padding-2);
   border: var(--border-width) solid var(--primary-color-light);
   border-radius: var(--border-radius-round);
   text-transform: uppercase;
