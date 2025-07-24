@@ -11,7 +11,7 @@ import {
 import { AppContext } from "./context";
 import { Menu, MenuButton } from "./components";
 import { UI_PRIMARY_COLOR_HUE } from "./constants";
-import { presetMap } from "./animations";
+import { presetMap, EMPTY_ANIMATION } from "./animations";
 import { calcAnimationFramesPerUpdate } from "./utils";
 
 const App: FC = () => {
@@ -64,7 +64,7 @@ const App: FC = () => {
           <SignContainer>
             <div className="d-f jc-c">
               <LEDImageSign
-                images={presetMap[preset]?.animation || []}
+                images={presetMap[preset]?.animation || EMPTY_ANIMATION}
                 animationOptions={{ direction: animationDirection }}
                 width={size}
                 fullWidth={isFullWidth}
