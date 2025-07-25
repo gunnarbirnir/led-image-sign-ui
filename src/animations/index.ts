@@ -1,4 +1,5 @@
 import { FIRE_BURNING_16 } from "./fire";
+import { FIREWORKS_16 } from "./fireworks";
 import { PSYCHEDELIC_TRIP_16 } from "./psychedelic";
 import { WAVES_16 } from "./waves";
 import { FREEZE_16 } from "./freeze";
@@ -14,6 +15,7 @@ export const animationPresets: AnimationPreset[] = [
   { id: "psychedelic", label: "Psychedelic", animation: PSYCHEDELIC_TRIP_16 },
   { id: "fire", label: "Fire", animation: FIRE_BURNING_16 },
   { id: "waves", label: "Waves", animation: WAVES_16 },
+  { id: "fireworks", label: "Fireworks", animation: FIREWORKS_16 },
   { id: "freeze", label: "Freeze", animation: FREEZE_16 },
 ];
 

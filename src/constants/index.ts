@@ -21,7 +21,7 @@ export const INIT_SIGN_CONFIG = {
   offBulbLightness: 10,
   frameLightness: 15,
   backgroundLightness: 0,
-  animationSpeed: 10,
+  animationSpeed: 8,
   hideFrame: false,
   boomerang: false,
 };
