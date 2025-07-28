@@ -16,6 +16,7 @@ import { calcAnimationFramesPerUpdate } from "./utils";
 
 const App: FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [signKey, setSignKey] = useState(Date.now());
   const {
     input,
     initialized,
@@ -52,6 +53,7 @@ const App: FC = () => {
     input,
     menuOpen,
     setMenuOpen,
+    setSignKey,
     updateSignConfig,
     updateSignConfigDebounced,
     resetSignConfig,
@@ -64,6 +66,7 @@ const App: FC = () => {
           <SignContainer>
             <div className="d-f jc-c">
               <LEDImageSign
+                key={signKey}
                 images={presetMap[preset]?.animation || EMPTY_ANIMATION}
                 animationOptions={{ direction: animationDirection }}
                 width={size}

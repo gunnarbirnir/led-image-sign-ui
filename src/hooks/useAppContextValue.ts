@@ -6,6 +6,7 @@ const useAppContextValue = ({
   input,
   menuOpen,
   setMenuOpen,
+  setSignKey,
   updateSignConfig,
   updateSignConfigDebounced,
   resetSignConfig,
@@ -13,6 +14,7 @@ const useAppContextValue = ({
   input: SignConfig;
   menuOpen: boolean;
   setMenuOpen: (open: boolean) => void;
+  setSignKey: (key: number) => void;
   updateSignConfigDebounced: (config: SignConfigUpdate) => void;
   updateSignConfig: (config: SignConfigUpdate) => void;
   resetSignConfig: () => void;
@@ -22,6 +24,7 @@ const useAppContextValue = ({
       menuOpen,
       ...input,
       setMenuOpen,
+      updateSignKey: () => setSignKey(Date.now()),
       resetSignConfig,
       setPreset: (preset: string) => updateSignConfig({ preset }),
       setSize: (size: number) => updateSignConfigDebounced({ size }),
@@ -42,6 +45,7 @@ const useAppContextValue = ({
       menuOpen,
       input,
       setMenuOpen,
+      setSignKey,
       updateSignConfig,
       updateSignConfigDebounced,
       resetSignConfig,

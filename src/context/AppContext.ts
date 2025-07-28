@@ -5,6 +5,7 @@ import { SignConfig } from "../reducers/signConfigReducer";
 interface AppContextProps extends SignConfig {
   menuOpen: boolean;
   setMenuOpen: (open: boolean) => void;
+  updateSignKey: () => void;
   resetSignConfig: () => void;
   setPreset: (preset: string) => void;
   setSize: (size: number) => void;
@@ -29,6 +30,7 @@ const AppContext = createContext<AppContextProps>({
   hideFrame: false,
   boomerang: false,
   setMenuOpen: () => null,
+  updateSignKey: () => null,
   resetSignConfig: () => null,
   setPreset: () => null,
   setSize: () => null,

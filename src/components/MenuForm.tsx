@@ -35,6 +35,7 @@ const MenuForm: FC = () => {
     setSize,
     resetSignConfig,
     setMenuOpen,
+    updateSignKey,
     setOnBulbLightness,
     setOffBulbLightness,
     setFrameLightness,
@@ -52,9 +53,10 @@ const MenuForm: FC = () => {
     }
   }, [resetSignConfig, textAreaRef]);
 
-  const handleCloseMenu = useCallback(() => {
+  const handleApplyChanges = useCallback(() => {
     setMenuOpen(false);
-  }, [setMenuOpen]);
+    updateSignKey();
+  }, [setMenuOpen, updateSignKey]);
 
   return (
     <StyledMenuForm>
@@ -78,7 +80,7 @@ const MenuForm: FC = () => {
         />
       </FormLeft>
       <FormButtons>
-        <Button onClick={handleCloseMenu} className="apply-button">
+        <Button onClick={handleApplyChanges} className="apply-button">
           Apply
         </Button>
         <CopyLinkButton variant="outlined" />
