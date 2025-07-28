@@ -2,7 +2,6 @@ import { useCallback, useEffect } from "react";
 
 import { SignConfigUpdate } from "../reducers/signConfigReducer";
 import {
-  INIT_SIGN_CONFIG,
   URL_PARAM_KEYS,
   MIN_ON_BULB_LIGHTNESS,
   MAX_ON_BULB_LIGHTNESS,
@@ -39,25 +38,25 @@ const sanitizeParamVal: Record<string, (val: any) => any> = {
   size: sanitizeMinMaxValue(MIN_SIZE, MAX_SIZE),
 };
 
-const useUrlParams = (initConfig: (config: SignConfigUpdate) => void) => {
+const useUrlParams = (
+  initConfig: (config: SignConfigUpdate) => void,
+  INIT_CONFIG: Record<string, unknown>
+) => {
   const updateUrlParams = useCallback((config: SignConfigUpdate) => {
     const url = new URL(window.location.href);
 
     Object.keys(URL_PARAM_KEYS).forEach((confKey) => {
       const paramKey = URL_PARAM_KEYS[confKey];
       const confValue = config[confKey as SignConfigKey];
-      const initConfVal = INIT_SIGN_CONFIG[confKey as SignConfigKey];
       let formattedVal = "";
 
       if (confValue !== undefined) {
-        if (confValue !== initConfVal || confKey === "preset") {
-          if (typeof confValue === "string") {
-            formattedVal = encodeURIComponent(confValue.toLowerCase());
-          } else if (typeof confValue === "number") {
-            formattedVal = confValue.toString();
-          } else if (typeof confValue === "boolean") {
-            formattedVal = confValue ? "true" : "false";
-          }
+        if (typeof confValue === "string") {
+          formattedVal = encodeURIComponent(confValue.toLowerCase());
+        } else if (typeof confValue === "number") {
+          formattedVal = confValue.toString();
+        } else if (typeof confValue === "boolean") {
+          formattedVal = confValue ? "true" : "false";
         }
 
         if (formattedVal) {
@@ -78,7 +77,7 @@ const useUrlParams = (initConfig: (config: SignConfigUpdate) => void) => {
     Object.keys(URL_PARAM_KEYS).forEach((confKey) => {
       const paramKey = URL_PARAM_KEYS[confKey];
       const paramVal = urlParams.get(paramKey);
-      const confType = typeof INIT_SIGN_CONFIG[confKey as SignConfigKey];
+      const confType = typeof INIT_CONFIG[confKey as SignConfigKey];
       const sanitizeVal = sanitizeParamVal[confKey];
       let parsedParamVal: unknown = paramVal;
 
@@ -98,12 +97,10 @@ const useUrlParams = (initConfig: (config: SignConfigUpdate) => void) => {
       }
     });
 
-    if (!paramValues.preset) {
-      updateUrlParams({ preset: INIT_SIGN_CONFIG.preset });
-    }
+    updateUrlParams({ ...INIT_CONFIG, ...paramValues });
 
     initConfig(paramValues);
-  }, [initConfig, updateUrlParams]);
+  }, [initConfig, updateUrlParams, INIT_CONFIG]);
 
   return updateUrlParams;
 };

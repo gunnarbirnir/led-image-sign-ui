@@ -6,11 +6,17 @@ import signConfigReducer, {
   SignConfigUpdate,
 } from "../reducers/signConfigReducer";
 import { INIT_SIGN_CONFIG } from "../constants";
+import { presetMap } from "../animations";
 import useUrlParams from "./useUrlParams";
 
-const INIT_STATE = {
+const initSignConfig = {
   ...INIT_SIGN_CONFIG,
-  input: INIT_SIGN_CONFIG,
+  ...(presetMap[INIT_SIGN_CONFIG.preset]?.config || {}),
+};
+
+const INIT_STATE = {
+  ...initSignConfig,
+  input: initSignConfig,
   initialized: false,
 };
 
@@ -24,7 +30,7 @@ const useSignConfig = () => {
     });
   }, []);
 
-  const updateUrlParams = useUrlParams(initConfig);
+  const updateUrlParams = useUrlParams(initConfig, initSignConfig);
 
   const debouncedUpdateConfig = useMemo(
     () =>
@@ -61,12 +67,17 @@ const useSignConfig = () => {
   );
 
   const resetSignConfig = useCallback(() => {
+    const resetPayload = {
+      ...INIT_SIGN_CONFIG,
+      preset: state.preset,
+      ...(presetMap[state.preset]?.config || {}),
+    };
     dispatch({
       type: SignConfigActionType.UPDATE_CONFIG_AND_INPUT,
-      payload: INIT_SIGN_CONFIG,
+      payload: resetPayload,
     });
-    updateUrlParams(INIT_SIGN_CONFIG);
-  }, [updateUrlParams]);
+    updateUrlParams(resetPayload);
+  }, [state.preset, updateUrlParams]);
 
   return {
     ...state,

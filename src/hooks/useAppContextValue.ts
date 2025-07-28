@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
 import { SignConfig, SignConfigUpdate } from "../reducers/signConfigReducer";
+import { presetMap } from "../animations";
 
 const useAppContextValue = ({
   input,
@@ -26,7 +27,8 @@ const useAppContextValue = ({
       setMenuOpen,
       updateSignKey: () => setSignKey(Date.now()),
       resetSignConfig,
-      setPreset: (preset: string) => updateSignConfig({ preset }),
+      setPreset: (preset: string) =>
+        updateSignConfig({ preset, ...(presetMap[preset]?.config || {}) }),
       setSize: (size: number) => updateSignConfigDebounced({ size }),
       setOnBulbLightness: (onBulbLightness: number) =>
         updateSignConfigDebounced({ onBulbLightness }),
