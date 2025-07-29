@@ -1,7 +1,7 @@
 import React, { FC, useCallback } from "react";
 import styled from "styled-components";
 
-import { useAppContext, useFocusSignTextArea } from "../hooks";
+import { useAppContext } from "../hooks";
 import {
   MEDIA_QUERY,
   MIN_SPEED,
@@ -23,7 +23,6 @@ import AnimationPresets from "./AnimationPresets";
 
 const MenuForm: FC = () => {
   const {
-    menuOpen,
     size,
     onBulbLightness,
     offBulbLightness,
@@ -44,14 +43,6 @@ const MenuForm: FC = () => {
     setHideFrame,
     setBoomerang,
   } = useAppContext();
-  const textAreaRef = useFocusSignTextArea(menuOpen);
-
-  const handleReset = useCallback(() => {
-    resetSignConfig();
-    if (textAreaRef?.current) {
-      textAreaRef.current.focus();
-    }
-  }, [resetSignConfig, textAreaRef]);
 
   const handleApplyChanges = useCallback(() => {
     setMenuOpen(false);
@@ -84,7 +75,7 @@ const MenuForm: FC = () => {
           Apply
         </Button>
         <CopyLinkButton variant="outlined" />
-        <Button onClick={handleReset} variant="outlined">
+        <Button onClick={resetSignConfig} variant="outlined">
           Reset
         </Button>
       </FormButtons>
